@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% block title %}
+Файлы для изменения
+{% endblock %}
+
+{% block body %}
+
+{% for intf, val in data.interfaces.items() %}
+<form method="post">
+{% if not "Vlan" in intf %}
+<h3>{{ intf }}</h3>
+<input name="interface" id="interface" type="hidden" value="{{ intf }}">
+
+<p>description <input name="descr" type=text size="40" value="{{ val.description }}"></p>
+
+<p>Настройка mode:
+<select name="mode" size="1" >
+{% if val.mode == False %}
+    <option selected value=""></option>
+    <option value="trunk">trunk</option>
+    <option value="access">access</option>
+{% elif val.mode == 'trunk' %}
+    <option  value=""></option>
+    <option selected value="trunk">trunk</option>
+    <option value="access">access</option>
+{% elif val.mode == 'access' %}
+    <option  value=""></option>
+    <option value="trunk">trunk</option>
+    <option selected value="access">access</option>
+{% endif %}
+</select>
+</p>
+{% if val.vlan_access == None %}
+<p>номер vlan_access: <input name="vlan_access" type=text size="20" value=""></p>
+{% else %}
+<p>номер vlan_access: <input name="vlan_access" type=text size="20" value="{{ val.vlan_access }}"></p>
+{% endif %}
+
+{% if val.vlan_trunk == None %}
+<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value=""></p>
+{% else %}
+<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value="{{ val.vlan_trunk }}"></p>
+{% endif %}
+
+{% if val.vlan_voice == None %}
+<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value=""></p>
+{% else %}
+<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value="{{ val.vlan_voice }}"></p>
+{% endif %}
+
+{% if val.vlan_native == None %}
+<p>номер vlan_native: <input name="vlan_native" type=text size="20" value=""></p>
+{% else %}
+<p>номер vlan_native: <input name="vlan_native" type=text size="20" value="{{ val.vlan_native }}"></p>
+{% endif %}
+
+<p>Настройка encapsulation:
+<select name="encapsulation" size="1" >
+{% if not val.encapsulation %}
+    <option selected value=""></option>
+    <option value="dot1q">dot1q</option>
+{% elif val.encapsulation == 'dot1q' %}
+    <option value="None"></option>
+    <option selected value="dot1q">dot1q</option>
+{% endif %}
+</select>
+</p>
+
+<p>Настройка arp_inspection:
+<select name="arp_inspection" size="1" >
+{% if not val.arp_inspection %}
+    <option selected value=""></option>
+    <option value="trust">trust</option>
+    <option value="edge">edge</option>
+    <option value="limit rate 300">limit rate 300</option>
+{% elif val.arp_inspection == 'trust' %}
+    <option value=""></option>
+    <option selected value="trust">trust</option>
+    <option value="edge">edge</option>
+    <option value="limit rate 300">limit rate 300</option>
+{% elif val.arp_inspection == 'edge' %}
+    <option value=""></option>
+    <option value="trust">trust</option>
+    <option selected value="edge">edge</option>
+    <option value="limit rate 300">limit rate 300</option>
+{% elif val.arp_inspection == 'limit rate 300' %}
+    <option value=""></option>
+    <option value="trust">trust</option>
+    <option value="edge">edge</option>
+    <option selected value="limit rate 300">limit rate 300</option>
+{% endif %}
+</select>
+</p>
+
+<p>Настройка dhcp_snooping:
+<select name="dhcp_snooping" size="1" >
+{% if not val.dhcp_snooping %}
+    <option selected value=""></option>
+    <option value="trust">trust</option>
+{% elif val.dhcp_snooping == 'trust' %}
+    <option value=""></option>
+    <option selected value="trust">trust</option>
+{% endif %}
+</select>
+</p>
+
+<p>Настройка load_interval: <input name="load_interval" type=text size="20" value="{{ val.load_interval }}"></p>
+
+<p>Настройка portfast:
+<select name="portfast" size="1" >
+{% if not val.portfast %}
+    <option selected value=""></option>
+    <option value="trunk">trunk</option>
+    <option value="edge">edge</option>
+{% elif val.portfast == 'trunk' %}
+    <option value=""></option>
+    <option selected value="trunk">trunk</option>
+    <option value="edge">edge</option>
+{% elif val.portfast == 'edge' %}
+    <option value=""></option>
+    <option  value="trunk">trunk</option>
+    <option selected value="edge">edge</option>
+{% endif %}
+</select>
+</p>
+
+<p>Настройка bpdufilter:
+<select name="bpdufilter" size="1" >
+{% if not val.bpdufilter %}
+    <option selected value=""></option>
+    <option value="edge">enable</option>
+{% elif val.bpdufilter == 'enable' %}
+    <option value=""></option>
+    <option selected value="edge">enable</option>
+{% endif %}
+</select>
+</p>
+
+<p>номер channel_group: <input name="channel_group" type=text size="20" value="{{ val.channel_group }}"></p>
+
+<p>Настройка status:
+<select name="status" size="1" >
+{% if not val.status %}
+    <option selected value=""></option>
+    <option value="shutdown">shutdown</option>
+    <option value="no shutdown">no shutdown</option>
+{% elif val.status == 'shutdown' %}
+    <option value=""></option>
+    <option selected value="shutdown">shutdown</option>
+    <option value="no shutdown">no shutdown</option>
+{% elif val.status == 'no shutdown' %}
+    <option value=""></option>
+    <option value="shutdown">shutdown</option>
+    <option selected value="no shutdown">no shutdown</option>
+{% endif %}
+</select>
+</p>
+
+{% elif 'Vlan' in intf %}
+<h3>{{ intf }}</h3>
+<input name="interface" id="interface" type="hidden" value="{{ intf }}">
+
+<p>description <input name="descr" type=text size="40" value="{{ val.description }}"></p>
+
+<p>IP-адрес и маска: <input name="ip" type=text size="40" value="{{ val.ip }}"</p>
+
+<p>Настройка status:
+<select name="status" size="1" >
+{% if not val.status %}
+    <option selected value=""></option>
+    <option value="shutdown">shutdown</option>
+    <option value="no shutdown">no shutdown</option>
+{% elif val.status == 'shutdown' %}
+    <option value=""></option>
+    <option selected value="shutdown">shutdown</option>
+    <option value="no shutdown">no shutdown</option>
+{% elif val.status == 'no shutdown' %}
+    <option value=""></option>
+    <option value="shutdown">shutdown</option>
+    <option selected value="no shutdown">no shutdown</option>
+{% endif %}
+</select>
+</p>
+
+{% endif %}
+    <input type="submit">
+    <input type="reset">
+    </form>
+{% endfor %}
+
+
+{% endblock %}
