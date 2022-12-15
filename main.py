@@ -46,8 +46,7 @@ def data_file(file, interface):
     with open('data/'+file, 'r') as f:
         data = yaml.safe_load(f)
     if request.method == "GET":
-        print(data['interfaces'])
-        return render_template('data.html', data=data['interfaces'], interface=interface)
+        return render_template('data.html', data=data['interfaces'], file=file, interface=interface)
     elif request.method == "POST":
         data_dict = request.form.to_dict()
         # print(data_dict['description'])
@@ -66,14 +65,16 @@ def data_file(file, interface):
                     data['interfaces'][intf][param] = data_dict[param]
 
         elif "Vlan" in intf:
-
             for param in param_vlan:
-                if not request.form[param] and data['interfaces'][intf].get(param):
+                if not request.form.get(param) and data['interfaces'][intf].get(param):
                     del data['interfaces'][intf][param]
-                elif request.form[param]:
+                elif request.form.get(param):
                     data['interfaces'][intf][param] = request.form[param]
+        with open('data/' + file, 'w') as f:
+            s = yaml.dump(data).replace('null', '').replace("'", "")
+            f.write(s)
 
-    return data
+    return render_template('data_table.html', data=data, file=file)
 
 if __name__ == '__main__':
     app.run(debug=True)

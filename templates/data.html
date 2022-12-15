@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-<a href="/">Список устройств</a>
+<a href="/data/{{ file }}">Список интерфейсов</a>
 <form method="post">
 {% if not "Vlan" in interface %}
 <h3>{{ interface }}</h3>
@@ -17,7 +17,7 @@
 {% if "mode" in data[interface] %}
 <p>Настройка mode:
 <select name="mode" size="1" >
-{% if data[interface].mode == False %}
+{% if not data[interface].mode %}
     <option selected value=""></option>
     <option value="trunk">trunk</option>
     <option value="access">access</option>
@@ -35,27 +35,27 @@
 {% endif %}
 
 {% if data[interface]['vlan_access'] == None %}
-<p>номер vlan_access: <input name="vlan_access" type=text size="20" value=""></p>
+<p>номер vlan_access: <input name="vlan_access" type=text size="40" value=""></p>
 {% else %}
-<p>номер vlan_access: <input name="vlan_access" type=text size="20" value="{{ data[interface].vlan_access }}"></p>
+<p>номер vlan_access: <input name="vlan_access" type=text size="40" value="{{ data[interface].vlan_access }}"></p>
 {% endif %}
 
 {% if data[interface].vlan_trunk == None %}
-<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value=""></p>
+<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="40" value=""></p>
 {% else %}
-<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value="{{ data[interface].vlan_trunk }}"></p>
+<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="40" value="{{ data[interface].vlan_trunk }}"></p>
 {% endif %}
 
 {% if data[interface].vlan_voice == None %}
-<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value=""></p>
+<p>номер vlan_voice: <input name="vlan_voice" type=text size="40" value=""></p>
 {% else %}
-<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value="{{ data[interface].vlan_voice }}"></p>
+<p>номер vlan_voice: <input name="vlan_voice" type=text size="40" value="{{ data[interface].vlan_voice }}"></p>
 {% endif %}
 
 {% if data[interface].vlan_native == None %}
-<p>номер vlan_native: <input name="vlan_native" type=text size="20" value=""></p>
+<p>номер vlan_native: <input name="vlan_native" type=text size="40" value=""></p>
 {% else %}
-<p>номер vlan_native: <input name="vlan_native" type=text size="20" value="{{ data[interface].vlan_native }}"></p>
+<p>номер vlan_native: <input name="vlan_native" type=text size="40" value="{{ data[interface].vlan_native }}"></p>
 {% endif %}
 
 <p>Настройка encapsulation:
