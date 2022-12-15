@@ -4,62 +4,66 @@
 {% endblock %}
 
 {% block body %}
-
-{% for intf, val in data.interfaces.items() %}
+<a href="/">Список устройств</a>
 <form method="post">
-{% if not "Vlan" in intf %}
-<h3>{{ intf }}</h3>
-<input name="interface" id="interface" type="hidden" value="{{ intf }}">
+{% if not "Vlan" in interface %}
+<h3>{{ interface }}</h3>
+<input name="interface" id="interface" type="hidden" value="{{ interface }}">
 
-<p>description <input name="descr" type=text size="40" value="{{ val.description }}"></p>
 
+<p>description <input name="description" type=text size="40" value="{{ data[interface]['description'] }}"></p>
+
+
+{% if "mode" in data[interface] %}
 <p>Настройка mode:
 <select name="mode" size="1" >
-{% if val.mode == False %}
+{% if data[interface].mode == False %}
     <option selected value=""></option>
     <option value="trunk">trunk</option>
     <option value="access">access</option>
-{% elif val.mode == 'trunk' %}
+{% elif data[interface].mode == 'trunk' %}
     <option  value=""></option>
     <option selected value="trunk">trunk</option>
     <option value="access">access</option>
-{% elif val.mode == 'access' %}
+{% elif data[interface].mode == 'access' %}
     <option  value=""></option>
     <option value="trunk">trunk</option>
     <option selected value="access">access</option>
 {% endif %}
 </select>
 </p>
-{% if val.vlan_access == None %}
+{% endif %}
+
+{% if data[interface]['vlan_access'] == None %}
 <p>номер vlan_access: <input name="vlan_access" type=text size="20" value=""></p>
 {% else %}
-<p>номер vlan_access: <input name="vlan_access" type=text size="20" value="{{ val.vlan_access }}"></p>
+<p>номер vlan_access: <input name="vlan_access" type=text size="20" value="{{ data[interface].vlan_access }}"></p>
 {% endif %}
 
-{% if val.vlan_trunk == None %}
+{% if data[interface].vlan_trunk == None %}
 <p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value=""></p>
 {% else %}
-<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value="{{ val.vlan_trunk }}"></p>
+<p>номер vlan_trunk: <input name="vlan_trunk" type=text size="20" value="{{ data[interface].vlan_trunk }}"></p>
 {% endif %}
 
-{% if val.vlan_voice == None %}
+{% if data[interface].vlan_voice == None %}
 <p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value=""></p>
 {% else %}
-<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value="{{ val.vlan_voice }}"></p>
+<p>номер vlan_voice: <input name="vlan_voice" type=text size="20" value="{{ data[interface].vlan_voice }}"></p>
 {% endif %}
 
-{% if val.vlan_native == None %}
+{% if data[interface].vlan_native == None %}
 <p>номер vlan_native: <input name="vlan_native" type=text size="20" value=""></p>
 {% else %}
-<p>номер vlan_native: <input name="vlan_native" type=text size="20" value="{{ val.vlan_native }}"></p>
+<p>номер vlan_native: <input name="vlan_native" type=text size="20" value="{{ data[interface].vlan_native }}"></p>
 {% endif %}
 
 <p>Настройка encapsulation:
 <select name="encapsulation" size="1" >
-{% if not val.encapsulation %}
+{% if not data[interface].encapsulation %}
     <option selected value=""></option>
     <option value="dot1q">dot1q</option>
-{% elif val.encapsulation == 'dot1q' %}
+{% elif data[interface].encapsulation == 'dot1q' %}
     <option value="None"></option>
     <option selected value="dot1q">dot1q</option>
 {% endif %}
@@ -68,22 +72,22 @@
 
 <p>Настройка arp_inspection:
 <select name="arp_inspection" size="1" >
-{% if not val.arp_inspection %}
+{% if not data[interface].arp_inspection %}
     <option selected value=""></option>
     <option value="trust">trust</option>
     <option value="edge">edge</option>
     <option value="limit rate 300">limit rate 300</option>
-{% elif val.arp_inspection == 'trust' %}
+{% elif data[interface].arp_inspection == 'trust' %}
     <option value=""></option>
     <option selected value="trust">trust</option>
     <option value="edge">edge</option>
     <option value="limit rate 300">limit rate 300</option>
-{% elif val.arp_inspection == 'edge' %}
+{% elif data[interface].arp_inspection == 'edge' %}
     <option value=""></option>
     <option value="trust">trust</option>
     <option selected value="edge">edge</option>
     <option value="limit rate 300">limit rate 300</option>
-{% elif val.arp_inspection == 'limit rate 300' %}
+{% elif data[interface].arp_inspection == 'limit rate 300' %}
     <option value=""></option>
     <option value="trust">trust</option>
     <option value="edge">edge</option>
@@ -94,29 +98,29 @@
 
 <p>Настройка dhcp_snooping:
 <select name="dhcp_snooping" size="1" >
-{% if not val.dhcp_snooping %}
+{% if not data[interface].dhcp_snooping %}
     <option selected value=""></option>
     <option value="trust">trust</option>
-{% elif val.dhcp_snooping == 'trust' %}
+{% elif data[interface].dhcp_snooping == 'trust' %}
     <option value=""></option>
     <option selected value="trust">trust</option>
 {% endif %}
 </select>
 </p>
 
-<p>Настройка load_interval: <input name="load_interval" type=text size="20" value="{{ val.load_interval }}"></p>
+<p>Настройка load_interval: <input name="load_interval" type=text size="20" value="{{ data[interface].load_interval }}"></p>
 
 <p>Настройка portfast:
 <select name="portfast" size="1" >
-{% if not val.portfast %}
+{% if not data[interface].portfast %}
     <option selected value=""></option>
     <option value="trunk">trunk</option>
     <option value="edge">edge</option>
-{% elif val.portfast == 'trunk' %}
+{% elif data[interface].portfast == 'trunk' %}
     <option value=""></option>
     <option selected value="trunk">trunk</option>
     <option value="edge">edge</option>
-{% elif val.portfast == 'edge' %}
+{% elif data[interface].portfast == 'edge' %}
     <option value=""></option>
     <option  value="trunk">trunk</option>
     <option selected value="edge">edge</option>
@@ -126,29 +130,29 @@
 
 <p>Настройка bpdufilter:
 <select name="bpdufilter" size="1" >
-{% if not val.bpdufilter %}
+{% if not data[interface].bpdufilter %}
     <option selected value=""></option>
     <option value="edge">enable</option>
-{% elif val.bpdufilter == 'enable' %}
+{% elif data[interface].bpdufilter == 'enable' %}
     <option value=""></option>
     <option selected value="edge">enable</option>
 {% endif %}
 </select>
 </p>
 
-<p>номер channel_group: <input name="channel_group" type=text size="20" value="{{ val.channel_group }}"></p>
+<p>номер channel_group: <input name="channel_group" type=text size="20" value="{{ data[interface].channel_group }}"></p>
 
 <p>Настройка status:
 <select name="status" size="1" >
-{% if not val.status %}
+{% if not data[interface].status %}
     <option selected value=""></option>
     <option value="shutdown">shutdown</option>
     <option value="no shutdown">no shutdown</option>
-{% elif val.status == 'shutdown' %}
+{% elif data[interface].status == 'shutdown' %}
     <option value=""></option>
     <option selected value="shutdown">shutdown</option>
     <option value="no shutdown">no shutdown</option>
-{% elif val.status == 'no shutdown' %}
+{% elif data[interface].status == 'no shutdown' %}
     <option value=""></option>
     <option value="shutdown">shutdown</option>
     <option selected value="no shutdown">no shutdown</option>
@@ -156,25 +160,25 @@
 </select>
 </p>
 
-{% elif 'Vlan' in intf %}
+{% elif 'Vlan' in interface %}
 <h3>{{ intf }}</h3>
-<input name="interface" id="interface" type="hidden" value="{{ intf }}">
+<input name="interface" id="interface" type="hidden" value="{{ interface }}">
 
-<p>description <input name="descr" type=text size="40" value="{{ val.description }}"></p>
+<p>description <input name="descr" type=text size="40" value="{{ data[interface].description }}"></p>
 
-<p>IP-адрес и маска: <input name="ip" type=text size="40" value="{{ val.ip }}"</p>
+<p>IP-адрес и маска: <input name="ip" type=text size="40" value="{{ data[interface].ip }}"</p>
 
 <p>Настройка status:
 <select name="status" size="1" >
-{% if not val.status %}
+{% if not data[interface].status %}
     <option selected value=""></option>
     <option value="shutdown">shutdown</option>
     <option value="no shutdown">no shutdown</option>
-{% elif val.status == 'shutdown' %}
+{% elif data[interface].status == 'shutdown' %}
     <option value=""></option>
     <option selected value="shutdown">shutdown</option>
     <option value="no shutdown">no shutdown</option>
-{% elif val.status == 'no shutdown' %}
+{% elif data[interface].status == 'no shutdown' %}
     <option value=""></option>
     <option value="shutdown">shutdown</option>
     <option selected value="no shutdown">no shutdown</option>
@@ -186,7 +190,6 @@
     <input type="submit">
     <input type="reset">
     </form>
-{% endfor %}
 
 
 {% endblock %}

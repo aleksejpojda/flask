@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}
+Список портов устройства
+{% endblock %}
+
+{% block body %}
+<a href="/">Список устройств</a>
+<table border="1" rules="all">
+    <caption>Список портов устройств</caption>
+    <tr>
+        <th>Interface</th>
+        <th>description</th>
+        <th>mode</th>
+        <th>vlan_access</th>
+        <th>vlan_trunk</th>
+        <th>vlan_voice</th>
+        <th>vlan_native</th>
+        <th>channel_group</th>
+        <th>status</th>
+        <th>ip_mask</th>
+    </tr>
+    {% for intf, val in data.interfaces.items() %}
+    {% set intf1 = intf.replace('/', '_') %}
+    <tr>
+        <td><a href="/data/{{ file }}/{{ intf1 }}">{{ intf }}</a></td><td>{{ val.description }}</td><td>{{ val.mode }}</td>
+        <td>{{ val.vlan_access }}</td><td>{{ val.vlan_trunk }}</td><td>{{ val.vlan_voice }}</td>
+        <td>{{ val.vlan_native }}</td><td>{{ val.channel_group }}</td><td>{{ val.status }}</td>
+        <td>{{ val.ip }}</td>
+    </tr>
+    {% endfor %}
+{% endblock %}
