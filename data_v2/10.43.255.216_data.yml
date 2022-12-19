@@ -1,0 +1,110 @@
+interfaces:
+  GigabitEthernet0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/3:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/6:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/9:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+    status: shutdown
+  GigabitEthernet0/10:
+    description: Vhod v ocean pod potolkom
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10,12,39,40,70
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/11:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/12:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  Vlan1:
+    status: shutdown
+  Vlan39:
+    ip: 10.43.255.216 255.255.255.0
+gateway: 10.43.255.1

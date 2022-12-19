@@ -1,0 +1,216 @@
+interfaces:
+  FastEthernet0/1:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/2:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/3:
+    description: local
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/4:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/5:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/6:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/7:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/8:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/9:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/10:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/11:
+    description: local
+    mode: access
+    vlan_access: 12
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/12:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/13:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/14:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/15:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/16:
+    description: local
+    mode: access
+    vlan_access: 12
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/17:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/18:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/19:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/20:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/21:
+    description: local
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/22:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/23:
+    description: local
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+  FastEthernet0/24:
+    description: UPLINK
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,39,70
+    vlan_voice: 
+    vlan_native: 
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/1:
+    description: UpLink
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,11,12,39,70
+    vlan_voice: 
+    vlan_native: 
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/2:
+    description: UpLink
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,11,12,39,70
+    vlan_voice: 
+    vlan_native: 
+    dhcp_snooping: trust
+    load_interval: 30
+  Vlan1:
+    status: shutdown
+  Vlan39:
+    ip: 10.43.255.109 255.255.255.0
+gateway: 10.43.255.1

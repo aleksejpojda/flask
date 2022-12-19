@@ -1,0 +1,1765 @@
+# Возможные параметры
+# description | description text | коментарий
+# mode | switchport mode {mode} | trunk, access или пусто, для интерфейсов VlanX
+# ip | ip address {ip mask} | маска в формате 255.255.255.255, если не указано no ip address
+# vlan_access | switchport access vlan {vlan_access} | номер влана
+# vlan_trunk | switchport trunk allowed vlan {vlan_trunk} | номера вланов через запятую без пробелов, от меньшего до большего
+# vlan_voice | switchport voice vlan {vlan_voice} | если есть, то еще комада switchport port-security maximum 1 vlan voice
+# vlan_native | switchport trunk native vlan {vlan_native} | номер влана
+# encapsulation | switchport trunk encapsulation {encapsulation} | dot1q (одно любое слово, если слов несколько поправим)
+# arp_inspection | ip arp inspection {arp_inspection} | trust, edge или limit rate 300 (все что угодно до конца строки)
+# dhcp_snooping | ip dhcp snooping {dhcp_snooping} | trust (одно любое слово, если слов несколько поправим)
+# load_interval | load-interval {load_interval} | число
+# portfast |  spanning-tree portfast {portfast} | trunk (одно любое слово, если слов несколько поправим)
+# bpdufilter | spanning-tree bpdufilter {bpdufilter} | enable (одно любое слово, если слов несколько поправим)
+# status | shutdown/no shutdown | если не указано, то текущий статус
+# channel_group | channel-group {channel_group} mode active | номер port-channel
+# gateway | ip default-gateway {gateway} | IP-адрес шлюза по-умолчанию
+
+interfaces:
+  Port-channel5:
+    description: Pobedy,50 - N5k_22, N5k_23
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 80
+    vlan_voice: 
+    vlan_native: 
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  GigabitEthernet0/0:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    status: shutdown
+  GigabitEthernet1/0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/3:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/6:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/9:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/10:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/11:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/12:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/13:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/15:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/17:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/18:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/19:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/20:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/21:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/22:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/23:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/24:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/25:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/26:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/27:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/28:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/29:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/30:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/31:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/32:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/33:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/34:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/35:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/36:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/37:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/38:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/39:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/40:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/41:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/42:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/43:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/44:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/45:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/46:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/47:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet1/0/48:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  TenGigabitEthernet1/1/1:
+    description: S060_floor6:Te1/1/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet1/1/2:
+    description: S010_floor1:Te1/1/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet1/1/3:
+    description: Pobedy,50 - N5k_22
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 80
+    vlan_voice: 
+    vlan_native: 
+    portfast: trunk
+    bpdufilter: enable
+    channel_group: 5
+  TenGigabitEthernet1/1/4:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet2/0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/3:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/6:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/9:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/10:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/11:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/12:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/13:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/15:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/17:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/18:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/19:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/20:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/21:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/22:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/23:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/24:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/25:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/26:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/27:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/28:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/29:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/30:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/31:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/32:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/33:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/34:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/35:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/36:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/37:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/38:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/39:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/40:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/41:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/42:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/43:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/44:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/45:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/46:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/47:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet2/0/48:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  TenGigabitEthernet2/1/1:
+    description: S020_floor2:Te1/1/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,171,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet2/1/2:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet2/1/3:
+    description: Ocean-RL1-1072:sfp1
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,171,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet2/1/4:
+    description: Okean6509:Gi6/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,171,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet3/0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/3:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/6:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/9:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/10:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/11:
+    description: WIFI
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  GigabitEthernet3/0/12:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/13:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/15:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/17:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/18:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/19:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/20:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/21:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/22:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/23:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/24:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/25:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/26:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/27:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/28:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/29:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/30:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/31:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/32:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/33:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/34:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/35:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/36:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/37:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/38:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/39:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/40:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/41:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/42:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/43:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/44:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/45:
+    description: WIFI
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  GigabitEthernet3/0/46:
+    description: WIFI
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  GigabitEthernet3/0/47:
+    description: Umnij dom
+    mode: access
+    vlan_access: 39
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet3/0/48:
+    description: 10.43.255.81
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet3/1/1:
+    description: S040_floor4:Te1/1/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet3/1/2:
+    description: S050_floor5:Te1/1/4
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet3/1/3:
+    description: Pobedy,50 - N5k_23
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 80
+    vlan_voice: 
+    vlan_native: 
+    portfast: trunk
+    bpdufilter: enable
+    channel_group: 5
+  TenGigabitEthernet3/1/4:
+    description: 9200L stack HD :Ten 1/1/3
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,171
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet4/0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/3:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/6:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/9:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/10:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/11:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/12:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/13:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/15:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/17:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/18:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/19:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/20:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/21:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/22:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/23:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/24:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/25:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/26:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/27:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/28:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/29:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/30:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/31:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/32:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/33:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/34:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/35:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/36:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/37:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/38:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/39:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/40:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/41:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/42:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/43:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet4/0/44:
+    description: 10.43.255.38
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet4/0/45:
+    description: 10.43.255.3
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet4/0/46:
+    description: 10.43.255.36
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet4/0/47:
+    description: 10.43.255.35
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet4/0/48:
+    description: 10.43.255.34
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet4/1/1:
+    description: Pobedy,50 - N5k_23
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 80
+    vlan_voice: 
+    vlan_native: 
+    portfast: trunk
+    bpdufilter: enable
+  TenGigabitEthernet4/1/2:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet4/1/3:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  TenGigabitEthernet4/1/4:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12,38,39,70,80,82,808,999
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  Vlan1:
+    ip: 10.1.201.253 255.255.240.0
+  Vlan10:
+    ip: 10.1.10.251 255.255.255.0
+  Vlan11:
+    ip: 10.1.11.251 255.255.255.0
+  Vlan12:
+    ip: 10.1.12.251 255.255.255.0
+  Vlan39:
+    ip: 10.43.255.30 255.255.255.0
+  Vlan70:
+    ip: 10.112.0.17 255.255.240.0
+  Vlan80:
+    ip: 10.255.10.62 255.255.255.248
+  Vlan82:
+    ip: 10.255.10.54 255.255.255.248
+gateway: 10.43.255.1

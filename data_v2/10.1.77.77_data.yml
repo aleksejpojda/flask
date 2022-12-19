@@ -1,0 +1,110 @@
+# Возможные параметры
+# description | description text | коментарий
+# mode | switchport mode {mode} | trunk, access или пусто, для интерфейсов VlanX
+# ip | ip address {ip mask} | маска в формате 255.255.255.255, если не указано no ip address
+# vlan_access | switchport access vlan {vlan_access} | номер влана
+# vlan_trunk | switchport trunk allowed vlan {vlan_trunk} | номера вланов через запятую без пробелов, от меньшего до большего
+# vlan_voice | switchport voice vlan {vlan_voice} | если есть, то еще комада switchport port-security maximum 1 vlan voice
+# vlan_native | switchport trunk native vlan {vlan_native} | номер влана
+# encapsulation | switchport trunk encapsulation {encapsulation} | dot1q (одно любое слово, если слов несколько поправим)
+# arp_inspection | ip arp inspection {arp_inspection} | trust, edge или limit rate 300 (все что угодно до конца строки)
+# dhcp_snooping | ip dhcp snooping {dhcp_snooping} | trust (одно любое слово, если слов несколько поправим)
+# load_interval | load-interval {load_interval} | число
+# portfast |  spanning-tree portfast {portfast} | trunk (одно любое слово, если слов несколько поправим)
+# bpdufilter | spanning-tree bpdufilter {bpdufilter} | enable (одно любое слово, если слов несколько поправим)
+# status | shutdown/no shutdown | если не указано, то текущий статус
+# channel_group | channel-group {channel_group} mode active | номер port-channel
+# gateway | ip default-gateway {gateway} | IP-адрес шлюза по-умолчанию
+
+interfaces:
+  Port-channel1:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+  GigabitEthernet0/1:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/2:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/3:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/4:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/5:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/6:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/7:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/8:
+    mode: access
+    vlan_access: 105
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/9:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    channel_group: 1
+  GigabitEthernet0/10:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    channel_group: 1
+  GigabitEthernet0/11:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  GigabitEthernet0/12:
+    mode: 
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+  Vlan1:
+  Vlan105:
+    ip: 10.1.77.77 255.255.255.128
+  Vlan109:
+gateway: 10.1.77.1

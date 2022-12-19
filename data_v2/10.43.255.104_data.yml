@@ -1,0 +1,99 @@
+interfaces:
+  FastEthernet0/1:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/2:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/3:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/4:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/5:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/6:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/7:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  FastEthernet0/8:
+    mode: access
+    vlan_access: 10
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: edge
+  GigabitEthernet0/1:
+    description: UpLink
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,38,39,70
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/2:
+    description: UpLink
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,70,168
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+    portfast: edge
+  Vlan1:
+    status: shutdown
+  Vlan39:
+    ip: 10.43.255.104 255.255.255.0
+gateway: 10.43.255.1
