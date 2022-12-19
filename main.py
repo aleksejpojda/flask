@@ -7,8 +7,32 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    onlyfiles = [f for f in listdir('data') if isfile(join('data', f))]
+    onlyfiles = [f for f in listdir('data_v2') if isfile(join('data_v2', f))]
     return render_template('index.html', onlyfiles=onlyfiles)
+
+
+@app.route('/errors/')
+def errors():
+    onlyfiles = [f for f in listdir('errors') if isfile(join('errors', f))]
+    return render_template('errors.html', onlyfiles=onlyfiles)
+
+@app.route("/errors/<string:file>")
+def errors_file(file):
+    with open('errors/'+file, 'r') as f:
+        data = yaml.full_load(f)
+        # data = f.read().split('\n')
+    return render_template('errors_file.html', file=file, data=data)
+
+@app.route('/conf/')
+def conf():
+    onlyfiles = [f for f in listdir('conf_v3') if isfile(join('conf_v3', f))]
+    return render_template('conf.html', onlyfiles=onlyfiles)
+
+@app.route("/conf/<string:file>")
+def conf_file(file):
+    with open('conf_v3/'+file, 'r') as f:
+        data = yaml.safe_load(f)
+    return data
 
 @app.route('/data/<string:file>') #, methods=['POST', 'GET'])
 def data_table(file):
