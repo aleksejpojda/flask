@@ -2,7 +2,6 @@ from flask import Flask, render_template, url_for, request
 import yaml, subprocess
 from os import listdir, environ
 from os.path import isfile, join
-from jinja2 import Environment, FileSystemLoader
 
 app = Flask(__name__)
 
