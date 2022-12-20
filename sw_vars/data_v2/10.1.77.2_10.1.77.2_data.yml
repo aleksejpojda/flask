@@ -1,7 +1,7 @@
 gateway: 10.1.77.1
 interfaces:
   GigabitEthernet0/1:
-    description: Cisco-880-ZAI 789789
+    description: Cisco-880-ZAI
     mode: access
     portfast: edge
     vlan_access: 105

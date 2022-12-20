@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 import yaml, subprocess
 from os import listdir, environ
 from os.path import isfile, join
@@ -87,7 +87,6 @@ def data_file(file, interface):
         return render_template('data.html', data=data['interfaces'], file=file, interface=interface)
     elif request.method == "POST":
         data_dict = request.form.to_dict()
-        print(data_dict)
         intf = data_dict["interface"]
         if not 'Vlan' in intf:
             for param in param_not_del:
@@ -112,7 +111,7 @@ def data_file(file, interface):
             s = yaml.dump(data).replace('null', '').replace("'", "")
             f.write(s)
 
-    return render_template('data_table.html', data=data, file=file)
+    return redirect("/data/" + file, code=302)
 
 if __name__ == '__main__':
     app.run(debug=True)
