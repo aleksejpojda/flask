@@ -1,0 +1,235 @@
+# Возможные параметры
+# description | description text | коментарий
+# mode | switchport mode {mode} | trunk, access или пусто, для интерфейсов VlanX
+# ip | ip address {ip mask} | маска в формате 255.255.255.255, если не указано no ip address
+# vlan_access | switchport access vlan {vlan_access} | номер влана
+# vlan_trunk | switchport trunk allowed vlan {vlan_trunk} | номера вланов через запятую без пробелов, от меньшего до большего
+# vlan_voice | switchport voice vlan {vlan_voice} | если есть, то еще комада switchport port-security maximum 1 vlan voice
+# vlan_native | switchport trunk native vlan {vlan_native} | номер влана
+# encapsulation | switchport trunk encapsulation {encapsulation} | dot1q (одно любое слово, если слов несколько поправим)
+# arp_inspection | ip arp inspection {arp_inspection} | trust, edge или limit rate 300 (все что угодно до конца строки)
+# dhcp_snooping | ip dhcp snooping {dhcp_snooping} | trust (одно любое слово, если слов несколько поправим)
+# load_interval | load-interval {load_interval} | число
+# portfast |  spanning-tree portfast {portfast} | trunk (одно любое слово, если слов несколько поправим)
+# bpdufilter | spanning-tree bpdufilter {bpdufilter} | enable (одно любое слово, если слов несколько поправим)
+# status | shutdown/no shutdown | если не указано, то текущий статус
+# channel_group | channel-group {channel_group} mode active | номер port-channel
+# gateway | ip default-gateway {gateway} | IP-адрес шлюза по-умолчанию
+
+interfaces:
+  FastEthernet0/1:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/2:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/3:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/4:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/5:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/6:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/7:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/8:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/9:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/10:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/11:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/12:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/13:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/15:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/17:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/18:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/19:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/20:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/21:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/22:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/23:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/24:
+    mode: access
+    vlan_access: 11
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet0/1:
+    description: UPLINK
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10,11,39,70
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/2:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10,11,39,70
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  Vlan1:
+    status: shutdown
+  Vlan39:
+    ip: 10.43.255.27 255.255.255.0
+gateway: 10.43.255.1

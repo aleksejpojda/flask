@@ -1,0 +1,19 @@
+---
+
+- name: reload device after XX min without save config
+  # Перезагрузка через (количество портов+2) минут, конфиг должeн быть сохранен перед этим
+  ios_command:
+    commands: "reload in 3\ny"
+
+- name: configure interface GigabitEthernet0/0
+  ios_config:
+    parents:
+      - "interface GigabitEthernet0/0"
+    lines:
+      - "description 111"
+      - no shutdown
+    save_when: modified
+
+- name: cancel reload
+  ios_command:
+    commands: "reload cancel\n"

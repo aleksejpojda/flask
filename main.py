@@ -1,6 +1,6 @@
 from flask import Flask, render_template, url_for, request
 import yaml, subprocess
-from os import listdir
+from os import listdir, environ
 from os.path import isfile, join
 from jinja2 import Environment, FileSystemLoader
 
@@ -40,21 +40,21 @@ def data_table(file):
         data = yaml.safe_load(f)
     if request.method == "GET":
         return render_template('data_table.html', data=data, file=file)
-    elif request.method == 'POST':
-        # data_dict = request.form.to_dict()
-        hostname = '_'.join(file.split('_')[1:-1])
-        command = [
-            'docker', 'run', '--rm', '-v', '${PWD}/sw_vars:/home/user/sw_vars',
-            'ansible-docker', 'ansible-playbook', '7-change_vlan_to_access_or_trunk_v2.yml', '-e', f'ip={hostname}',
-            '-e', 'usr=dz220883pap', '-e', 'pwd=Kolobok14', '-i', 'inventory.yml'
-        ]
-        result = subprocess.run(command)
-        if result.returncode == 0:
-            with open('sw_vars/data_v2/' + file, 'r') as f:
-                new_data = yaml.safe_load(f)
-            return render_template('conf_file.html', file=file, data=new_data)
-        else:
-            return f'Error, file {file}'
+    # elif request.method == 'POST':
+    #     # data_dict = request.form.to_dict()
+    #     hostname = '_'.join(file.split('_')[1:-1])
+    #     command = [
+    #         'docker', 'run', '--rm', '-v', f'{environ["PWD"]}/sw_vars:/home/user/sw_vars',
+    #         'ansible-docker', 'ansible-playbook', '7-change_vlan_to_access_or_trunk_v2.yml', '-e', f'ip={hostname}',
+    #         '-e', 'usr=dz220883pap', '-e', 'pwd=Kolobok14', '-i', 'inventory.yml'
+    #     ]
+    #     result = subprocess.run(command, stdout=subprocess.PIPE, encoding='utf-8')
+    #     if result.returncode == 0:
+    #         with open('sw_vars/data_v2/' + file, 'r') as f:
+    #             new_data = yaml.safe_load(f)
+    #         return render_template('conf_file.html', file=file, data=new_data)
+    #     else:
+    #         return f'Error, file {file}' + result.stdout
 
 @app.route('/data/<string:file>/<string:interface>', methods=['POST', 'GET'])
 def data_file(file, interface):
@@ -88,6 +88,7 @@ def data_file(file, interface):
         return render_template('data.html', data=data['interfaces'], file=file, interface=interface)
     elif request.method == "POST":
         data_dict = request.form.to_dict()
+        print(data_dict)
         intf = data_dict["interface"]
         if not 'Vlan' in intf:
             for param in param_not_del:

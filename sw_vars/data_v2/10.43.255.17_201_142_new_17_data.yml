@@ -1,0 +1,256 @@
+# Возможные параметры
+# description | description text | коментарий
+# mode | switchport mode {mode} | trunk, access или пусто, для интерфейсов VlanX
+# ip | ip address {ip mask} | маска в формате 255.255.255.255, если не указано no ip address
+# vlan_access | switchport access vlan {vlan_access} | номер влана
+# vlan_trunk | switchport trunk allowed vlan {vlan_trunk} | номера вланов через запятую без пробелов, от меньшего до большего
+# vlan_voice | switchport voice vlan {vlan_voice} | если есть, то еще комада switchport port-security maximum 1 vlan voice
+# vlan_native | switchport trunk native vlan {vlan_native} | номер влана
+# encapsulation | switchport trunk encapsulation {encapsulation} | dot1q (одно любое слово, если слов несколько поправим)
+# arp_inspection | ip arp inspection {arp_inspection} | trust, edge или limit rate 300 (все что угодно до конца строки)
+# dhcp_snooping | ip dhcp snooping {dhcp_snooping} | trust (одно любое слово, если слов несколько поправим)
+# load_interval | load-interval {load_interval} | число
+# portfast |  spanning-tree portfast {portfast} | trunk (одно любое слово, если слов несколько поправим)
+# bpdufilter | spanning-tree bpdufilter {bpdufilter} | enable (одно любое слово, если слов несколько поправим)
+# status | shutdown/no shutdown | если не указано, то текущий статус
+# channel_group | channel-group {channel_group} mode active | номер port-channel
+# gateway | ip default-gateway {gateway} | IP-адрес шлюза по-умолчанию
+
+interfaces:
+  FastEthernet0/1:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/2:
+    description: WIFI
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  FastEthernet0/3:
+    description: 10.43.255.214
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,70,168
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  FastEthernet0/4:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/5:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/6:
+    description: 10.43.255.111
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,70,168
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    dhcp_snooping: trust
+    load_interval: 30
+  FastEthernet0/7:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/8:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/9:
+    description: WIFI
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,10-12
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+    portfast: trunk
+    bpdufilter: enable
+  FastEthernet0/10:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 168
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/11:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/12:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/13:
+    description: ip Camera
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/14:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/15:
+    description: VIDEO
+    mode: access
+    vlan_access: 38
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/16:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/17:
+    description: VIDEO
+    mode: access
+    vlan_access: 38
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/18:
+    description: WIFI AP
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit none
+    load_interval: 30
+    portfast: trunk
+  FastEthernet0/19:
+    description: DVR
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/20:
+    description: 10.43.255.210
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,70,168
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    dhcp_snooping: trust
+    load_interval: 30
+  FastEthernet0/21:
+    description: DVR
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/22:
+    description: 10.43.255.84
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,39,70,168
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  FastEthernet0/23:
+    description: WIFI
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  FastEthernet0/24:
+    mode: access
+    vlan_access: 
+    vlan_trunk: 
+    vlan_voice: 70
+    vlan_native: 
+    arp_inspection: limit rate 300
+    load_interval: 30
+  GigabitEthernet0/1:
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1,38,39,70,168
+    vlan_voice: 
+    vlan_native: 
+    arp_inspection: trust
+    dhcp_snooping: trust
+    load_interval: 30
+  GigabitEthernet0/2:
+    description: WIFI AP
+    mode: trunk
+    vlan_access: 
+    vlan_trunk: 1
+    vlan_voice: 70
+    vlan_native: 
+    load_interval: 30
+    portfast: trunk
+  Vlan1:
+    status: shutdown
+  Vlan39:
+    ip: 10.43.255.17 255.255.255.0
+gateway: 10.43.255.1
