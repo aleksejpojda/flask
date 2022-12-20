@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}
+Сисок файлов с ошибками
+{% endblock %}
+
+{% block body %}
+<!--<a href="/">Список устройств</a>-->
+<h1>Выберите файл для просмотра несоответствий</h1>
+{% for files in onlyfiles %}
+    <p>
+      <a href="/errors/{{ files }}">{{ files }}</a>
+    </p>
+{% endfor %}
+{% endblock %}
