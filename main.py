@@ -45,7 +45,7 @@ def data_table(file):
     #     command = [
     #         'docker', 'run', '--rm', '-v', f'{environ["PWD"]}/sw_vars:/home/user/sw_vars',
     #         'ansible-docker', 'ansible-playbook', '7-change_vlan_to_access_or_trunk_v2.yml', '-e', f'ip={hostname}',
-    #         '-e', 'usr=dz220883pap', '-e', 'pwd=Kolobok14', '-i', 'inventory.yml'
+    #         '-e', 'usr=username', '-e', 'pwd=password', '-i', 'inventory.yml'
     #     ]
     #     result = subprocess.run(command, stdout=subprocess.PIPE, encoding='utf-8')
     #     if result.returncode == 0:
