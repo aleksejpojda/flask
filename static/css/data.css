@@ -1,0 +1,31 @@
+.form-control-dark {
+  border-color: var(--bs-gray);
+}
+.form-control-dark:focus {
+  border-color: #fff;
+  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
+}
+
+.text-small {
+  font-size: 85%;
+}
+
+.dropdown-toggle {
+  outline: 0;
+}
+
+span {
+  background-color: bisque;
+}
+
+.header {
+  background: bisque;
+  border: 3px solid #000;
+  border-color: black; 
+  border-collapse: collapse;
+  
+}
+
+th {
+  border: 2px solid black;
+}

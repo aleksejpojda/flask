@@ -4,13 +4,10 @@
 {% endblock %}
 
 {% block body %}
-    <p>
-      <a href="errors">Ошибки</a>
-        <a href="conf">       Конфигурация</a>
-    </p>
 <h1>Выберите файл, который необходимо изменить</h1>
+<ul>
 {% for files in onlyfiles %}
-    <p>
-      <a href="data/{{ files }}">{{ files }}</a>
-    </p>
-{% endfor %}{% endblock %}
+      <li><a href="/data/{{ files }}">{{ files }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

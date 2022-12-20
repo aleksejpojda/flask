@@ -1,0 +1,27 @@
+interfaces:
+{% for intf, data in result.interfaces.items() %}
+{% for line in status_now.response %}
+{% if intf == line['intf'] %}
+  {{ intf }}:
+{% set ns = namespace(changed = 0) %}
+{% if data %}
+{% for param, val in data.items() %}
+{% if line[param] == '' and val == None %}
+{% elif line[param] != val | string%}
+{% set ns.changed = ns.changed + 1 %}
+    {{ param  }}: {{ val }}
+{% endif %}
+{% endfor %}
+{% if ns.changed > 0 and data.mode == line.mode %}
+    mode: {{ data.mode }}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% if 'gateway' in result and result.gateway %}
+{% if status_now.response[-1].gateway == '' and result.gateway == None %}
+{% elif status_now.response[-1].gateway != result.gateway %}
+gateway: {{ result.gateway }}
+{% endif %}
+{% endif %}

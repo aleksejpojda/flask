@@ -1,0 +1,203 @@
+{% set ns = namespace(num_intf=0) %}
+{% for intf, param in result_diff.interfaces.items() %}
+{% if param %}
+{% set ns.num_intf = ns.num_intf+1 %}
+{% endif %}
+{% endfor %}
+{% if ns.num_intf > 0 %}
+---
+
+- name: reload device after XX min without save config
+  # Перезагрузка через (количество портов+2) минут, конфиг должeн быть сохранен перед этим
+  ios_command:
+    commands: "reload in {{ ns.num_intf + 2 }}\ny"
+{% endif %}
+{% for intf, param in result_diff.interfaces.items() %}
+{% if param %}
+
+- name: configure interface {{ intf }}
+  ios_config:
+    parents:
+      - "interface {{ intf }}"
+    lines:
+{% for line in status_now.response %}
+{% if line.intf == intf %}
+{% if not "mode" in param and "mode" in line %}
+{% set vlan_mode = line.mode %}
+{% elif "mode" in param %}
+{% set vlan_mode = param.mode %}
+{% else %}
+{% set vlan_mode = '' %}
+{% endif %}
+{% if ("mode" in param and "mode" in line and param.mode and line.mode) or (not line.mode and not "Vlan" in intf) %}
+{% if "mode" in param and param.mode == "trunk" %}
+{% if "encapsulation" in param and param.encapsulation %}
+      - "switchport trunk encapsulation {{ param.encapsulation }}"
+      - "switchport mode trunk"
+{% else %}
+      - "switchport mode trunk"
+{% endif %}
+{% if "vlan_trunk" in param %}{% if param.vlan_trunk %}
+      - "switchport trunk allowed vlan {{ param.vlan_trunk }}"
+{% elif "vlan_t" in line and line.vlan_t and (not "vlan_trunk" in param or not param.vlan_trunk) %}
+      - "no switchport trunk allowed vlan"
+{% endif %}
+{% endif %}
+{% if "arp_inspection" in param and param.arp_inspection %}
+      - "ip arp inspection {{ param.arp_inspection }}"
+{% elif "arp_inspection" in line and line.arp_inspection and ( not "arp_inspection" in param or not param.arp_inspection) %}
+      - "no ip arp inspection {{ line.arp_inspection }}"
+{% endif %}
+{% if "dhcp_snooping" in param and param.dhcp_snooping %}
+      - "ip dhcp snooping {{ param.dhcp_snooping }}"
+{% elif "dhcp_snooping" in line and line.dhcp_snooping and (not "dhcp_snooping" in param or not param.dhcp_snooping) %}
+      - "no ip dhcp snooping {{ line.dhcp_snooping }}"
+{% endif %}
+{% if "load_interval" in param and param.load_interval %}
+      - "load-interval {{ param.load_interval }}"
+{% elif "load_interval" in line and line.load_interval and (not "load_interval" in param or not param.load_interval) %}
+      - "no load-interval"
+{% endif %}
+{% if "portfast" in param and param.portfast %}
+      - "spanning-tree portfast {{ param.portfast }}"
+{% elif "portfast" in line and line.portfast and (not "portfast" in param or not param.portfast) %}
+      - "no spanning-tree portfast"
+{% endif %}
+{% if "bpdufilter" in param and param.bpdufilter %}
+      - "spanning-tree bpdufilter {{ param.bpdufilter }}"
+{% elif "bpdufilter" in line and line.bpdufilter and(not "bpdufilter" in param or not param.bpdufilter) %}
+      - "no spanning-tree bpdufilter"
+{% endif %}
+{% if "channel_group" in param and param.channel_group %}
+      - "channel-group {{ param.channel_group }} mode active"
+{% elif "channel_group" in line and line.channel_group and (not "channel_group" in param or not param.channel_group) %}
+      - "no channel-group"
+{% endif %}
+{% if "description" in param and param.description %}
+      - "description {{ param.description }}"
+{% elif "description" in line and line.description and (not "description" in param or not param.description) %}
+      - "no description"
+{% endif %}
+{% if "status" in param and param.status %}
+      - {{ param.status }}
+{% elif "status" in line and line.status == "shutdown" and ("status" not in param or not param.status) %}
+      - no shutdown
+{% endif %}
+{% if "vlan_native" in param and param.vlan_native %}
+      - "switchport trunk native vlan {{ param.vlan_native }}"
+{% elif "native_vlan" in line and line.native_vlan and not param.vlan_native %}
+      - "no switchport trunk native vlan"
+{% endif %}
+{% if line.mode != param.mode or ( not line.mode and not "Vlan" in intf ) %}
+    before:
+      - "default interface {{ intf }}"
+    replace: block
+{% endif %}
+{% elif "mode" in param and param.mode == "access" and not "Port-channel" in intf %}
+      - "switchport mode access"
+{% if "vlan_access" in param and param.vlan_access%}
+      - "switchport access vlan {{ param.vlan_access }}"
+{% else %}
+      - no switchport access vlan
+{% endif %}
+{% if "vlan_voice" in param and param.vlan_voice %}
+      - "switchport voice vlan {{ param.vlan_voice }}"
+{% elif "voice_vlan" in line and line.voice_vlan and not param.vlan_voice %}
+      - "no switchport voice vlan"
+{% endif %}
+      - "switchport port-security"
+      - "switchport port-security maximum 2"
+      - "switchport port-security maximum 1 vlan"
+{% if "vlan_voice" in param and param.vlan_voice %}
+      - "switchport port-security maximum 1 vlan voice"
+{% endif %}
+      - "switchport port-security aging time 5"
+      - "switchport port-security aging type inactivity"
+      - "switchport port-security aging static"
+      - "storm-control broadcast level bps 200k"
+      - "storm-control multicast level bps 200k"
+{% if "arp_inspection" in param and param.arp_inspection %}
+      - "ip arp inspection {{ param.arp_inspection }}"
+{% elif "arp_inspection" in line and line.arp_inspection and ( not "arp_inspection" in param or not param.arp_inspection) %}
+      - "no ip arp inspection {{ line.arp_inspection }}"
+{% endif %}
+{% if "dhcp_snooping" in param and param.dhcp_snooping %}
+      - "ip dhcp snooping {{ param.dhcp_snooping }}"
+{% elif "dhcp_snooping" in line and line.dhcp_snooping and (not "dhcp_snooping" in param or not param.dhcp_snooping) %}
+      - "no ip dhcp snooping {{ line.dhcp_snooping }}"
+{% endif %}
+{% if "load_interval" in param and param.load_interval %}
+      - "load-interval {{ param.load_interval }}"
+{% elif "load_interval" in line and line.load_interval and (not "load_interval" in param or not param.load_interval) %}
+      - "no load-interval"
+{% endif %}
+{% if "portfast" in param and param.portfast %}
+      - "spanning-tree portfast {{ param.portfast }}"
+{% elif "portfast" in line and line.portfast and (not "portfast" in param or not param.portfast) %}
+      - "no spanning-tree portfast"
+{% endif %}
+{% if "bpdufilter" in param and param.bpdufilter %}
+      - "spanning-tree bpdufilter {{ param.bpdufilter }}"
+{% elif "bpdufilter" in line and line.bpdufilter and(not "bpdufilter" in param or not param.bpdufilter) %}
+      - "no spanning-tree bpdufilter"
+{% endif %}
+{% if "channel_group" in param and param.channel_group %}
+      - "channel-group {{ param.channel_group }} mode active"
+{% elif "channel_group" in line and line.channel_group and (not "channel_group" in param or not param.channel_group) %}
+      - "no channel-group"
+{% endif %}
+{% if "description" in param and param.description %}
+      - "description {{ param.description }}"
+{% elif "description" in line and line.description and(not "description" in param or not param.description) %}
+      - "no description"
+{% endif %}
+{% if "status" in param and param.status %}
+      - "{{ param.status }}"
+{% elif "status" in line and line.status == "shutdown" and ("status" not in param or not param.status) %}
+      - no shutdown
+{% endif %}
+{% if line.mode != param.mode %}
+    before:
+      - default interface {{ intf }}
+    replace: block
+{% endif %}
+{% endif %}
+{% endif %}
+{% if not "mode" in param or not param.mode %}
+{% if "ip" in param and param.ip %}
+      - "ip address {{ param.ip }}"
+{% elif "Vlan" in intf and (not "ip" in param or not param.ip) %}
+      - "no ip address"
+{% endif %}
+{% if "description" in param and param.description %}
+      - "description {{ param.description }}"
+{% elif "description" in line and line.description and not param.description %}
+      - "no description"
+{% endif %}
+{% if "status" in param and param.status %}
+      - "{{ param.status }}"
+{% elif "status" in line and line.status == "shutdown" and ("status" not in param or not param.status) %}
+      - no shutdown
+{% endif %}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% if ns.num_intf > 0 %}
+    save_when: modified
+{% endif %}
+{% if 'gateway' in result_diff and result_diff.gateway %}
+
+- name: configure default-gateway
+  ios_config:
+    lines:
+      - "ip default-gateway {{ result_diff.gateway }}"
+    save_when: modified
+{% endif %}
+{% if ns.num_intf > 0 %}
+
+- name: cancel reload
+  ios_command:
+    commands: "reload cancel\n"
+{% endif %}

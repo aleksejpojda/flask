@@ -1,0 +1,70 @@
+# Возможные параметры
+# description | description text | коментарий
+# mode | switchport mode {mode} | trunk, access или пусто, для интерфейсов VlanX
+# ip | ip address {ip mask} | маска в формате 255.255.255.255, если не указано no ip address
+# vlan_access | switchport access vlan {vlan_access} | номер влана
+# vlan_trunk | switchport trunk allowed vlan {vlan_trunk} | номера вланов через запятую без пробелов, от меньшего до большего
+# vlan_voice | switchport voice vlan {vlan_voice} | если есть, то еще комада switchport port-security maximum 1 vlan voice
+# vlan_native | switchport trunk native vlan {vlan_native} | номер влана
+# encapsulation | switchport trunk encapsulation {encapsulation} | dot1q (одно любое слово, если слов несколько поправим)
+# arp_inspection | ip arp inspection {arp_inspection} | trust, edge или limit rate 300 (все что угодно до конца строки)
+# dhcp_snooping | ip dhcp snooping {dhcp_snooping} | trust (одно любое слово, если слов несколько поправим)
+# load_interval | load-interval {load_interval} | число
+# portfast |  spanning-tree portfast {portfast} | trunk (одно любое слово, если слов несколько поправим)
+# bpdufilter | spanning-tree bpdufilter {bpdufilter} | enable (одно любое слово, если слов несколько поправим)
+# status | shutdown/no shutdown | если не указано, то текущий статус
+# channel_group | channel-group {channel_group} mode active | номер port-channel
+# gateway | ip default-gateway {gateway} | IP-адрес шлюза по-умолчанию
+
+interfaces:
+{%for interface in result.response %}
+{% if interface.intf %}
+  {{ interface.intf }}:
+{% if interface.description %}
+    description: {{ interface.description }}
+{% endif %}
+{% if not "Vlan" in interface.intf %}
+    mode: {{ interface.mode }}
+{% endif %}
+{% if interface.ip %}
+    ip: {{ interface.ip }}
+{% endif %}
+{% if not "Vlan" in interface.intf %}
+    vlan_access: {{ interface.vlan_access }}
+{% endif %}
+{% if not "Vlan" in interface.intf %}
+    vlan_trunk: {{ interface.vlan_trunk }}
+{% endif %}
+{% if not "Vlan" in interface.intf %}
+    vlan_voice: {{ interface.vlan_voice }}
+{% endif %}
+{% if not "Vlan" in interface.intf %}
+    vlan_native: {{ interface.vlan_native }}
+{% endif %}
+{% if interface.encapsulation %}
+    encapsulation: {{ interface.encapsulation }}
+{% endif %}
+{% if interface.arp_inspection %}
+    arp_inspection: {{ interface.arp_inspection }}
+{% endif %}
+{% if interface.dhcp_snooping %}
+    dhcp_snooping: {{ interface.dhcp_snooping }}
+{% endif %}
+{% if interface.load_interval %}
+    load_interval: {{ interface.load_interval }}
+{% endif %}
+{% if interface.portfast %}
+    portfast: {{ interface.portfast }}
+{% endif %}
+{% if interface.bpdufilter %}
+    bpdufilter: {{ interface.bpdufilter }}
+{% endif %}
+{% if interface.channel_group %}
+    channel_group: {{ interface.channel_group }}
+{% endif %}
+{% if interface.status %}
+    status: {{ interface.status }}
+{% endif %}
+{% endif %}
+{% endfor %}
+gateway: {{ result.response[-1].gateway }}
