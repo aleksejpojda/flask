@@ -5,13 +5,19 @@
 
 {% block body %}
 <div class="main-index">
-  <div class="head-index">
-    <h2>Выберите файл для просмотра команд, которые будут отправлены на устройство</h2>
-  </div>
-  <div class="list-file-index">
-    {% for files in onlyfiles %}
-      <a href="/conf/{{ files }}">{{ files }}</a>
-    {% endfor %}
-  </div>
+    <div class="head-index">
+        <h2>Выберите файл для просмотра команд, которые будут отправлены на устройство</h2>
+    </div>
+    <div class="list">
+        <div class="list-file-index">
+            {% for files in onlyfiles %}
+            <a href="/conf/{{ files }}">{{ files }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="table-block">
+        {% block conf %}
+        {% endblock %}
+    </div>
 </div>
 {% endblock %}

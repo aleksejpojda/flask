@@ -5,7 +5,7 @@
 
 {% block body %}
 <div class="main-data">
-    <div class="link-dev"><a href="/data/{{ file }}">Список интерфейсов</a></div>
+    <div class="link-dev"><a href="/data/{{ file }}"><div class="back">&#10150;</div>Список интерфейсов</a></div>
     <div class="form">
         <form method="post">
         {% if not "Vlan" in interface %}

@@ -5,13 +5,20 @@
 
 {% block body %}
 <div class="main-index">
-  <div class="head-index">
-    <h2>Выберите файл для просмотра несоответствий</h2>
-  </div>
-  <div class="list-file-index">
-    {% for files in onlyfiles %}
-      <a href="/errors/{{ files }}">{{ files }}</a>
-    {% endfor %}
-  </div>
+    <div class="head-index">
+        <h2>Выберите файл для просмотра несоответствий</h2>
+    </div>
+    <div class="list">
+        <div class="list-file-index">
+            {% for files in onlyfiles %}
+            <a href="/errors/{{ files }}">{{ files }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="table-block">
+        {% block errors %}
+        {% endblock %}
+    </div>
+
 </div>
 {% endblock %}

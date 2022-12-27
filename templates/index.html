@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-Сисок файлов для конфигурации
+Список файлов для конфигурации
 {% endblock %}
 
 {% block body %}
@@ -14,6 +14,10 @@
                   <a href="/data/{{ files }}">{{ files }}</a>
                   {% endfor %}
             </div>
+      </div>
+      <div class="table-block">
+         {% block table %}
+         {% endblock %}
       </div>
 </div>
 {% endblock %}

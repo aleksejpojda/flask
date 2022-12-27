@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-{% block title %}
-Ошибки или несоответствия
-{% endblock %}
+{% extends 'errors.html' %}
 
-{% block body %}
+{% block errors %}
 <h3>Ошибки или несоответсвия по устройству ip: {{ ip }} hostname: {{ hostname }}</h3>
-<dev class="content">
+<div>
     {% for line in data %}
     <pre>  {{ line }}</pre>
     {% endfor %}
-</dev>
+</div>
 {% endblock %}

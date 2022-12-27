@@ -1,14 +1,12 @@
-{% extends 'base.html' %}
-{% block title %}
-Список портов устройства
-{% endblock %}
+{% extends 'index.html' %}
 
-{% block body %}
+
+{% block table %}
 <div class="main-dev-table">
-    <div class="link-dev"><a href="/">Список устройств</a></div>
+<!--    <div class="link-dev"><a href="/">Список устройств</a></div>-->
     <div class="content">
         <div class="header-table">
-            <h2 align="center">Список портов устройства ip: {{ ip }} hostname: {{ hostname }}</h2>
+            <h3 align="center">Список портов устройства ip: {{ ip }} hostname: {{ hostname }}</h3>
         </div>
         <div class="table">
             <table border="2" rules="all">
@@ -28,27 +26,47 @@
                 {% set intf1 = intf.replace('/', '_') %}
         
                 <tr>
-                    <td>
+                    <td class="intf">
                         <a href="/data/{{ file }}/{{ intf1 }}">{{ intf }}</a>
                     </td>
-                    <td>{{ val.description }}</td>
-                    <td>{{ val.mode }}</td>
-                    <td>{{ val.vlan_access }}</td>
-                    <td>{{ val.vlan_trunk }}</td>
-                    <td>{{ val.vlan_voice }}</td>
-                    <td>{{ val.vlan_native }}</td>
-                    <td>{{ val.channel_group }}</td>
-                    <td>{{ val.status }}</td>
-                    {% if val and "ip" in val and val.ip %}
-                    <td>{{ "ip: "+val.ip.replace(' ', ' mask: ') }}</td>
+                    <td class="data">{{ val.description }}</td>
+                    {% if val.mode != None %}
+                    <td class="data">{{ val.mode }}</td>
                     {% else %}
-                    <td>{{ val.ip }}</td>
+                    <td class="data"></td>
+                    {% endif %}
+                    {% if val.vlan_access != None %}
+                    <td class="data">{{ val.vlan_access }}</td>
+                    {% else %}
+                    <td class="data"></td>
+                    {% endif %}
+                    {% if val.vlan_trunk != None %}
+                    <td class="data">{{ val.vlan_trunk }}</td>
+                    {% else %}
+                    <td class="data"></td>
+                    {% endif %}
+                    {% if val.vlan_voice != None %}
+                    <td class="data">{{ val.vlan_voice }}</td>
+                    {% else %}
+                    <td class="data"></td>
+                    {% endif %}
+                    {% if val.vlan_native != None %}
+                    <td class="data">{{ val.vlan_native }}</td>
+                    {% else %}
+                    <td class="data"></td>
+                    {% endif %}
+                    <td class="data">{{ val.channel_group }}</td>
+                    <td class="data">{{ val.status }}</td>
+                    {% if val and "ip" in val and val.ip %}
+                    <td class="data">{{ "ip: "+val.ip.replace(' ', ' mask: ') }}</td>
+                    {% else %}
+                    <td class="data">{{ val.ip }}</td>
                     {% endif %}
                 </tr>
                 {% endfor %}
                 <tr class="gateway">
-                    <td>Шлюз о умолчанию:</td>
-                    <td colspan="9" align="right">{{ data.gateway }}</td>
+                    <td class="data">Шлюз о умолчанию:</td>
+                    <td class="data" colspan="9" align="right">{{ data.gateway }}</td>
                 </tr>
             </table>
         </div>

@@ -7,26 +7,27 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    onlyfiles = [f for f in listdir('sw_vars/data_v2') if isfile(join('sw_vars/data_v2', f))]
+    onlyfiles = files('sw_vars/data_v2')
     return render_template('index.html', onlyfiles=onlyfiles)
 
 
 @app.route('/errors/')
 def errors():
-    onlyfiles = [f for f in listdir('sw_vars/errors') if isfile(join('sw_vars/errors', f))]
+    onlyfiles = files('sw_vars/errors')
     return render_template('errors.html', onlyfiles=onlyfiles)
 
 @app.route("/errors/<string:file>")
 def errors_file(file):
     ip,hostname = ip_host(file)
+    onlyfiles = files('sw_vars/errors')
     with open('sw_vars/errors/'+file, 'r', encoding="utf-8") as f:
         data = f.read().split('\n')
         # yaml.full_load(f)
-    return render_template('errors_file.html', file=file, data=data, ip=ip, hostname=hostname)
+    return render_template('errors_file.html', file=file, data=data, ip=ip, hostname=hostname, onlyfiles=onlyfiles)
 
 @app.route('/conf/')
 def conf():
-    onlyfiles = [f for f in listdir('sw_vars/conf_v3') if isfile(join('sw_vars/conf_v3', f))]
+    onlyfiles = files('sw_vars/conf_v3')
     return render_template('conf.html', onlyfiles=onlyfiles)
 
 def ip_host(file):
@@ -34,20 +35,26 @@ def ip_host(file):
     ip = file.split('_')[0]
     return ip,hostname
 
+def files(path):
+    onlyfiles = [f for f in listdir(path) if isfile(join(path, f))]
+    return onlyfiles
+
 @app.route("/conf/<string:file>")
 def conf_file(file):
     ip,hostname = ip_host(file)
+    onlyfiles = files('sw_vars/conf_v3')
     with open('sw_vars/conf_v3/'+file, 'r', encoding="utf-8") as f:
         data = f.read().split('\n')
-    return render_template('conf_file.html', file=file, data=data, ip=ip, hostname=hostname)
+    return render_template('conf_file.html', file=file, data=data, ip=ip, hostname=hostname, onlyfiles=onlyfiles)
 
 @app.route('/data/<string:file>', methods=['POST', 'GET'])
 def data_table(file):
     ip,hostname = ip_host(file)
+    onlyfiles = files('sw_vars/data_v2')
     with open('sw_vars/data_v2/'+file, 'r') as f:
         data = yaml.safe_load(f)
     if request.method == "GET":
-        return render_template('data_table.html', data=data, file=file, ip=ip, hostname=hostname)
+        return render_template('data_table.html', data=data, file=file, ip=ip, hostname=hostname, onlyfiles=onlyfiles)
     # elif request.method == 'POST':
     #     # data_dict = request.form.to_dict()
     #     hostname = '_'.join(file.split('_')[1:-1])
