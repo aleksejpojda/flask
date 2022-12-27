@@ -4,16 +4,10 @@
 {% endblock %}
 
 {% block body %}
-<h3>Команды для отправки на устройство {{ file }}</h3>
-{% for line in data %}
-{% if "name" in line %}
-<b><p>{{line }}</p></b>
-{% elif "- " in line and not ":" in line %}
-<pre> {{line}}</pre>
-{% elif ":" in line and not "- " in line %}
-<pre> {{ line }}</pre>
-{% else %}
-<p>{{line }}</p>
-{% endif %}
-{% endfor %}
+<h3>Команды для отправки на устройство ip: {{ ip }} hostname: {{ hostname }}</h3>
+<div class="content">
+    {% for line in data %}
+    <pre> {{ line }}</pre>
+    {% endfor %}
+</div>
 {% endblock %}

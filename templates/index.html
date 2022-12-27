@@ -4,10 +4,16 @@
 {% endblock %}
 
 {% block body %}
-<h1>Выберите файл, который необходимо изменить</h1>
-<ul>
-{% for files in onlyfiles %}
-      <li><a href="/data/{{ files }}">{{ files }}</a></li>
-{% endfor %}
-</ul>
+<div class="main-index">
+      <div class="head-index">
+            <h2>Выберите файл, который необходимо изменить</h2>
+      </div>
+      <div class="list">
+            <div class="list-file-index">
+                  {% for files in onlyfiles %}
+                  <a href="/data/{{ files }}">{{ files }}</a>
+                  {% endfor %}
+            </div>
+      </div>
+</div>
 {% endblock %}

@@ -4,8 +4,10 @@
 {% endblock %}
 
 {% block body %}
-<h3>Ошибки или несоответсвия по устройству {{ file }}</h3>
-{% for key,line in data.items() %}
-<p>{{ key }} {{line }}</p>
-{% endfor %}
+<h3>Ошибки или несоответсвия по устройству ip: {{ ip }} hostname: {{ hostname }}</h3>
+<dev class="content">
+    {% for line in data %}
+    <pre>  {{ line }}</pre>
+    {% endfor %}
+</dev>
 {% endblock %}

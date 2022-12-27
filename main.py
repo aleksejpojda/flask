@@ -18,27 +18,36 @@ def errors():
 
 @app.route("/errors/<string:file>")
 def errors_file(file):
+    ip,hostname = ip_host(file)
     with open('sw_vars/errors/'+file, 'r', encoding="utf-8") as f:
-        data = yaml.full_load(f)
-    return render_template('errors_file.html', file=file, data=data)
+        data = f.read().split('\n')
+        # yaml.full_load(f)
+    return render_template('errors_file.html', file=file, data=data, ip=ip, hostname=hostname)
 
 @app.route('/conf/')
 def conf():
     onlyfiles = [f for f in listdir('sw_vars/conf_v3') if isfile(join('sw_vars/conf_v3', f))]
     return render_template('conf.html', onlyfiles=onlyfiles)
 
+def ip_host(file):
+    hostname = '_'.join(file.split('_')[1:-1])
+    ip = file.split('_')[0]
+    return ip,hostname
+
 @app.route("/conf/<string:file>")
 def conf_file(file):
+    ip,hostname = ip_host(file)
     with open('sw_vars/conf_v3/'+file, 'r', encoding="utf-8") as f:
         data = f.read().split('\n')
-    return render_template('conf_file.html', file=file, data=data)
+    return render_template('conf_file.html', file=file, data=data, ip=ip, hostname=hostname)
 
 @app.route('/data/<string:file>', methods=['POST', 'GET'])
 def data_table(file):
+    ip,hostname = ip_host(file)
     with open('sw_vars/data_v2/'+file, 'r') as f:
         data = yaml.safe_load(f)
     if request.method == "GET":
-        return render_template('data_table.html', data=data, file=file)
+        return render_template('data_table.html', data=data, file=file, ip=ip, hostname=hostname)
     # elif request.method == 'POST':
     #     # data_dict = request.form.to_dict()
     #     hostname = '_'.join(file.split('_')[1:-1])

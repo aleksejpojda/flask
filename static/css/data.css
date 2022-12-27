@@ -1,21 +1,10 @@
-.form-control-dark {
-  border-color: var(--bs-gray);
-}
-.form-control-dark:focus {
-  border-color: #fff;
-  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-.text-small {
-  font-size: 85%;
-}
-
-.dropdown-toggle {
-  outline: 0;
-}
-
-span {
-  background-color: bisque;
+body {
+  background: linear-gradient(270deg, #9C9A9A 0%, #fff 100%);
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, serif;
 }
 
 .header {
@@ -26,6 +15,96 @@ span {
   
 }
 
-th {
+th, .gateway td {
   border: 2px solid black;
 }
+
+td a {
+  display: block;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0;
+  text-decoration: none;
+  background:rgb(166, 173, 175);
+  color: black;
+}
+
+.main-dev-table table, p {
+  margin-left: 15px;
+}
+
+.main-dev-table p {
+  text-align: right;
+}
+
+.main {
+  display: flex;
+  background: rgb(166, 173, 175);
+  border-bottom-style: solid;
+  border-color: rgb(51, 51, 51);
+}
+
+.menu {
+  display: flex;
+}
+
+.menu a {
+  display: block;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0;
+  text-decoration: none;
+  background: linear-gradient(180deg, #f0f1f1 0%, rgb(31, 96, 172) 100%);
+  color: black;
+}
+
+.menu a:hover, .link-dev a:hover {
+  background: #b9b9b9;  
+}
+
+td a:hover {
+  background: #c2c2c2;
+}
+
+.link-dev {
+  display: flex;
+  background: linear-gradient(270deg, #607470 0%, rgb(31, 172, 165) 100%);
+
+}
+
+.link-dev a {
+  display: block;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0;
+  text-decoration: none;
+  background: linear-gradient(180deg, #607470 0%, rgb(31, 172, 165) 100%);
+  color: black;
+}
+
+.content {
+  height: 85vh;
+  overflow: auto;
+}
+
+.list-file-index {
+  height: 85vh;
+  width: 400px;
+  overflow: auto;
+}
+
+.list-file-index a {
+  display: flex;
+  padding: 10px;
+  border-style: solid;
+  border-width: 0;
+  text-decoration: none;
+  background:rgb(228, 228, 228);
+  color: black;
+  margin: 0;
+}
+
+.list-file-index a:hover {
+  background: #c2c2c2;
+}
+
