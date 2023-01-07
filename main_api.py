@@ -12,7 +12,7 @@ def index():
     return jsonify({'files': onlyfiles})
 
 
-@app.route('/api/errors/')
+@app.route('/api/errors')
 def errors():
     onlyfiles = files('sw_vars/errors')
     return jsonify({"files": onlyfiles})
@@ -25,7 +25,7 @@ def errors_file(file):
     return jsonify({file: data})
 
 
-@app.route('/api/conf/')
+@app.route('/api/conf')
 def conf():
     onlyfiles = files('sw_vars/conf_v3')
     return jsonify({"files": onlyfiles})
